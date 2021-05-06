@@ -1,0 +1,16 @@
+{
+  "currEnv": "production",
+  "dbLoadBatchSize": 10000,
+  "production": {
+    "appName": "g3tools-mws",
+    "appDesc": "Marketplace API Access",
+    "nodePort": 3000,
+    "jsonIndentation": 4,
+    "username": "fbagoldprod",
+    "password": "dg1095",
+    "database": "amazon_mws",
+    "host": "52.27.78.242",
+    "dialect": "mysql",
+    "operatorsAliases": false
+  }
+} 

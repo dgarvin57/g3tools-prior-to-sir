@@ -1,0 +1,264 @@
+@refreshToken = {{login.response.body.refreshToken}}
+@accessToken = {{login.response.body.accessToken}}
+
+
+###
+// *************************** LOGIN and TOKENS *******************
+// Login
+# @name login
+POST http://www.g3tools.net/api/users/login
+Content-Type: application/json
+
+{ 
+    "username": "dgarvin57@gmail.com",
+    "password": "dg1095"
+}
+
+###
+
+// Logout
+POST http://www.g3tools.net/api/users/logout
+Authorization: Bearer {{accessToken}}
+
+###
+// Encrypt password
+POST http://www.g3tools.net/api/users/encryptPassword
+Content-Type: application/json
+
+{
+    "password": "dg1095"
+}
+
+###
+
+// See a list of all refresh tokens
+GET http://www.g3tools.net/api/tokens/
+Authorization: Bearer {{accessToken}}
+
+###
+// Refresh token
+# @name refresh
+POST http://www.g3tools.net/api/tokens/refresh
+Content-Type: application/json
+
+{
+    "token": "{{refreshToken}}"
+}
+
+//@accessToken = {{refresh.response.body.accessToken}}
+
+###
+
+// Delete expired tokens
+DELETE http://www.g3tools.net/api/tokens/pruneZzi39
+Authorization: Bearer {{accessToken}}
+
+###
+
+
+// *************************** USERS *******************
+// Get all users
+GET http://www.g3tools.net/api/users
+Authorization: Bearer {{accessToken}}
+
+###
+// Find users
+GET http://www.g3tools.net/api/users/find?searchText=connie
+Authorization: Bearer {{accessToken}}
+
+###
+// Find one user by id
+GET http://www.g3tools.net/api/users/21
+Authorization: Bearer {{accessToken}}
+
+###
+// Delete one user by id
+DELETE http://www.g3tools.net/api/users/21
+Authorization: Bearer {{accessToken}}
+
+###
+// Create user
+POST http://www.g3tools.net/api/users
+Authorization: Bearer {{accessToken}}
+Content-Type: application/json
+
+{
+    "username": "connie25@gmail.com",
+    "password": "dg1083s"
+}
+
+###
+// Update user
+PUT http://www.g3tools.net/api/users/19
+Authorization: Bearer {{accessToken}}
+Content-Type: application/json
+
+{
+    "password": "dg10100"
+}
+
+###
+// *************************** ITEMS *******************
+// Get all items
+GET http://www.g3tools.net/api/items?limit=50&page=1&orderBy=size&orderDir=DESC
+Authorization: Bearer {{accessToken}}
+
+###
+// Find (search) items
+GET http://www.g3tools.net/api/items/find?searchText=ADI_aaTest2
+Authorization: Bearer {{accessToken}}
+
+#####
+// Get 1 item
+GET http://www.g3tools.net/api/items/102988
+Authorization: Bearer {{accessToken}}
+
+####
+// Update record
+PUT http://www.g3tools.net/api/items/102988
+Authorization: Bearer {{accessToken}}
+Content-Type: application/json
+
+{    
+    "productTitle": "Adidas Mens TF BASE LS T-Shirt/Long Sleeve - WHITE - 3XL bbb"
+}
+
+#####
+// Delete
+DELETE http://www.g3tools.net/api/items/102988
+Authorization: Bearer {{accessToken}}
+
+#####
+// Create item
+POST http://www.g3tools.net/api/items
+Authorization: Bearer {{accessToken}}
+Content-Type: application/json
+
+{
+    "itemNumber": "ADI_aaTest3",
+    "mfgItemNumber": "ADI_aaTest3",
+    "brandName": "Adidas",
+    "productTitle": "Adidas Mens TF BASE LS T-Shirt/Long Sleeve - WHITE - 3XL",
+    "productType": "Apparel",
+    "styleCode": "test",
+    "colorCode": "WHITE",
+    "color": "WHITE",
+    "size": "L",
+    "upc": "test3426679y",
+    "alternateUpc": null,
+    "cost": "13.20",
+    "msrp": "30.00",
+    "note": "Test item master record",
+    "logItemNumbers": "ADI_aaTest2",
+    "amazonSku": "TEST-SKU2",
+    "amazonAsin": "TEST-ASIN",
+    "pastSkus": null,
+    "amazonFnsku": "X001NS3NYJ",
+    "ebaySku": null
+}
+
+###
+// *************************** BRANDS *******************
+// Get all BRANDs
+GET http://www.g3tools.net/api/brands
+Authorization: Bearer {{accessToken}}
+
+// Get all BRANDs passing page limit, page #, and order by
+GET http://www.g3tools.net/api/brands?limit=50&page=2&orderBy=brandName&orderDir=ASC
+Authorization: Bearer {{accessToken}}
+
+###
+// Find (search) BRAND
+GET http://www.g3tools.net/api/brands/find?searchText=sebago
+Authorization: Bearer {{accessToken}}
+
+#####
+// Get 1 BRAND
+GET http://www.g3tools.net/api/brands/471
+Authorization: Bearer {{accessToken}}
+
+####
+// Update BRAND
+PUT http://www.g3tools.net/api/brands/16684
+Authorization: Bearer {{accessToken}}
+Content-Type: application/json
+
+{
+    "brandName": "zTest Brand",
+    "abbreviation": "ZZZ",
+    "description": null,
+    "active": false,
+    "vendorName": "Test Vendor zzz",
+    "distributor": null,
+    "discount": null,
+    "initialEvaluationDate": "2018-02-20T06:00:00.000Z",
+    "uploadedInitialData": false,
+    "note": null,
+    "soldOnAmazon": true,
+    "restricted": "No",
+    "restrictedNotes": null,
+    "restrictedConfirmedByAmazon": null,
+    "priority": 1,
+    "status": "Pursue",
+    "sourceOfLead": null,
+    "amazonListingsCount": 810,
+    "categories": "Footwear",
+    "evaluationNotes": "1 possible",
+    "haveUpcs": null,
+    "doAmazonScan": true,
+    "amazonScanDate": "2018-02-19T06:00:00.000Z",
+    "amazonScanItems": 822,
+    "goodBuyItems": 105,
+    "variations": 4662,
+    "replenishing": null,
+    "pursue": true
+ }
+
+#####
+// Delete
+DELETE http://www.g3tools.net/api/brands/16684
+Authorization: Bearer {{accessToken}}
+
+#####
+// Create brand
+POST http://www.g3tools.net/api/brands
+Authorization: Bearer {{accessToken}}
+Content-Type: application/json
+
+{
+    "brandName": "zTest Brand",
+    "abbreviation": "ZZZ",
+    "description": null,
+    "active": false,
+    "vendorName": "Test Vendor",
+    "distributor": null,
+    "discount": null,
+    "initialEvaluationDate": "2018-02-20T06:00:00.000Z",
+    "uploadedInitialData": false,
+    "note": null,
+    "soldOnAmazon": true,
+    "restricted": "No",
+    "restrictedNotes": null,
+    "restrictedConfirmedByAmazon": null,
+    "priority": 1,
+    "status": "Pursue",
+    "sourceOfLead": null,
+    "amazonListingsCount": 810,
+    "categories": "Footwear",
+    "evaluationNotes": "1 possible",
+    "haveUpcs": null,
+    "doAmazonScan": true,
+    "amazonScanDate": "2018-02-19T06:00:00.000Z",
+    "amazonScanItems": 822,
+    "goodBuyItems": 105,
+    "variations": 4662,
+    "replenishing": null,
+    "pursue": true
+}
+
+###
+// Get informed download link for repricing routine
+GET https://api.informed.co/v1/export/downloadlink/41c10486-9296-4948-83f9-7d95496ecfd7
+accept: application/json
+x-api-key: JOS0Jz5cALa3VURh180xowIoKCnlMRb2yH5X1njs
+

@@ -1,0 +1,51 @@
+{
+  "name": "express-rest-api-structure",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "scripts": { 
+    "start": "nodemon server.js",
+    "start-local": "nodemon -r dotenv/config server.js",
+    "test": "NODE_ENV=test mocha --watch ./tests/**/*.test.js",
+    "test:ci": "NODE_ENV=test mocha ./tests/**/*.test.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/coreyc/express-rest-api-structure.git"
+  },
+  "author": "Dan Garvin, based on Corey Cleary",
+  "license": "MIT",
+  "devDependencies": {
+    "chai": "^4.1.2",
+    "dotenv": "^8.2.0",
+    "mocha": "^8.2.1",
+    "nodemon": "^2.0.6",
+    "supertest": "^3.3.0"
+  },
+  "dependencies": {
+    "bcrypt": "^5.0.0",
+    "body-parser": "^1.18.3",
+    "config": "^3.2.5",
+    "cors": "^2.8.5",
+    "crypto": "^1.0.1",
+    "dateformat": "^3.0.3",
+    "express": "^4.16.3",
+    "express-validator": "^5.3.1",
+    "fs": "0.0.1-security",
+    "fs.promises": "^0.1.2",
+    "glob": "^7.1.6",
+    "jsonwebtoken": "^8.5.1",
+    "jwt-decode": "^2.2.0",
+    "lodash": "^4.17.20",
+    "log-timestamp": "^0.3.0",
+    "log4js": "^6.1.0",
+    "moment": "^2.24.0",
+    "moment-timezone": "^0.5.27",
+    "mysql2": "^1.7.0",
+    "node-fetch": "^2.6.1",
+    "nodemailer": "^6.4.2",
+    "passport": "^0.4.1",
+    "run-middleware": "^0.9.10",
+    "superagent": "^4.0.0-beta.5"
+  }
+}
